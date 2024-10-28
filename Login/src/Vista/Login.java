@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package loginTest;
+
+package Vista;
 
 import java.awt.Color;
 
@@ -12,6 +9,7 @@ int xMouse, yMouse;
 
     public Login() {
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -33,6 +31,8 @@ int xMouse, yMouse;
         Entrybottom = new javax.swing.JPanel();
         entrartxtbtn = new javax.swing.JLabel();
         icon = new javax.swing.JLabel();
+        BoxSelecRol = new javax.swing.JComboBox<>();
+        SeleccionarRol = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -41,7 +41,7 @@ int xMouse, yMouse;
         setResizable(false);
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
-        bg.setBorder(javax.swing.BorderFactory.createLineBorder(null));
+        bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         bg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         bg.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         bg.setMinimumSize(new java.awt.Dimension(800, 500));
@@ -115,13 +115,13 @@ int xMouse, yMouse;
         bg.add(nameEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 170, 40));
 
         AdminLabel.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
-        AdminLabel.setText("ADMINISTRADOR");
+        AdminLabel.setText("Usuario");
         AdminLabel.setToolTipText("");
         bg.add(AdminLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 330, -1));
 
         Admintxt.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         Admintxt.setForeground(new java.awt.Color(204, 204, 204));
-        Admintxt.setText("Ingrese el Administrador");
+        Admintxt.setText("Ingrese el Usuario");
         Admintxt.setBorder(null);
         Admintxt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -181,6 +181,18 @@ int xMouse, yMouse;
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/WhatsApp Image 2024-10-23 at 8.35.36 PM.jpeg"))); // NOI18N
         bg.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, -1, -1));
 
+        BoxSelecRol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        BoxSelecRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Empleado" }));
+        BoxSelecRol.setToolTipText("Seleccione un rol");
+        BoxSelecRol.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BoxSelecRol.setName(""); // NOI18N
+        bg.add(BoxSelecRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 210, -1));
+
+        SeleccionarRol.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
+        SeleccionarRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SeleccionarRol.setText("Seleccione el rol");
+        bg.add(SeleccionarRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 210, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -196,7 +208,7 @@ int xMouse, yMouse;
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdmintxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmintxtMousePressed
-        if(Admintxt.getText().equals("Ingrese el Administrador")){
+        if(Admintxt.getText().equals("Ingrese el Usuario")){
         Admintxt.setText("");
         Admintxt.setForeground(Color.black);
         }
@@ -213,7 +225,7 @@ int xMouse, yMouse;
         }
         
         if(Admintxt.getText().isEmpty()){
-        Admintxt.setText("Ingrese el Administrador");
+        Admintxt.setText("Ingrese el Usuario");
         Admintxt.setForeground(Color.gray);
         }  
     }//GEN-LAST:event_passtxtMousePressed
@@ -227,7 +239,7 @@ int xMouse, yMouse;
     }//GEN-LAST:event_entrartxtbtnMouseExited
 
     private void entrartxtbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseClicked
-        javax.swing.JOptionPane.showMessageDialog(this, "Intento de Login con los datos: \nAdministrador: " +Admintxt.getText()+ "\nContraseña: "+ String.valueOf(passtxt.getPassword()) +"Login"+javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        javax.swing.JOptionPane.showMessageDialog(this, "Intento de Login con los datos: \nAdministrador: " +Admintxt.getText()+ "\nContraseña: "+ String.valueOf(passtxt.getPassword()) +" Login "+javax.swing.JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_entrartxtbtnMouseClicked
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
@@ -255,9 +267,8 @@ int xMouse, yMouse;
         exitbtn.setForeground(Color.black);
     }//GEN-LAST:event_exittxtMouseExited
 
-    /**
-     * @param args the command line arguments
-     */
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -293,8 +304,10 @@ int xMouse, yMouse;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdminLabel;
     private javax.swing.JTextField Admintxt;
+    private javax.swing.JComboBox<String> BoxSelecRol;
     private javax.swing.JPanel Entrybottom;
     private javax.swing.JLabel PasswordLabel;
+    private javax.swing.JLabel SeleccionarRol;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel entrartxtbtn;
