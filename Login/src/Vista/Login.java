@@ -28,11 +28,13 @@ int xMouse, yMouse;
         PasswordLabel = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         passtxt = new javax.swing.JPasswordField();
-        Entrybottom = new javax.swing.JPanel();
+        entrybtn = new javax.swing.JPanel();
         entrartxtbtn = new javax.swing.JLabel();
         icon = new javax.swing.JLabel();
         BoxSelecRol = new javax.swing.JComboBox<>();
         SeleccionarRol = new javax.swing.JLabel();
+        nuevoUsuariobtn = new javax.swing.JPanel();
+        nuevoUsuariotxt = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -42,7 +44,7 @@ int xMouse, yMouse;
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        bg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bg.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         bg.setFont(new java.awt.Font("Roboto Medium", 0, 14)); // NOI18N
         bg.setMinimumSize(new java.awt.Dimension(800, 500));
         bg.setName(""); // NOI18N
@@ -107,12 +109,12 @@ int xMouse, yMouse;
 
         TitleLabel.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         TitleLabel.setText("Inicio de Sesión");
-        bg.add(TitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 180, 30));
+        bg.add(TitleLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 180, 30));
 
         nameEnterprise.setFont(new java.awt.Font("Freestyle Script", 0, 24)); // NOI18N
         nameEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nameEnterprise.setText("JESSICA JOYERIA");
-        bg.add(nameEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, 170, 40));
+        bg.add(nameEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 170, 40));
 
         AdminLabel.setFont(new java.awt.Font("Roboto Medium", 0, 16)); // NOI18N
         AdminLabel.setText("Usuario");
@@ -146,9 +148,10 @@ int xMouse, yMouse;
         });
         bg.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, -1));
 
-        Entrybottom.setBackground(new java.awt.Color(0, 134, 190));
-        Entrybottom.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        Entrybottom.setName("ENTRAR"); // NOI18N
+        entrybtn.setBackground(new java.awt.Color(0, 134, 190));
+        entrybtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        entrybtn.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        entrybtn.setName("ENTRAR"); // NOI18N
 
         entrartxtbtn.setBackground(new java.awt.Color(0, 134, 190));
         entrartxtbtn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -165,21 +168,21 @@ int xMouse, yMouse;
             }
         });
 
-        javax.swing.GroupLayout EntrybottomLayout = new javax.swing.GroupLayout(Entrybottom);
-        Entrybottom.setLayout(EntrybottomLayout);
-        EntrybottomLayout.setHorizontalGroup(
-            EntrybottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout entrybtnLayout = new javax.swing.GroupLayout(entrybtn);
+        entrybtn.setLayout(entrybtnLayout);
+        entrybtnLayout.setHorizontalGroup(
+            entrybtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(entrartxtbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
-        EntrybottomLayout.setVerticalGroup(
-            EntrybottomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        entrybtnLayout.setVerticalGroup(
+            entrybtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(entrartxtbtn, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
         );
 
-        bg.add(Entrybottom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 100, 30));
+        bg.add(entrybtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 100, 30));
 
         icon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/WhatsApp Image 2024-10-23 at 8.35.36 PM.jpeg"))); // NOI18N
-        bg.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, -1, -1));
+        bg.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         BoxSelecRol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         BoxSelecRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Empleado" }));
@@ -191,7 +194,37 @@ int xMouse, yMouse;
         SeleccionarRol.setFont(new java.awt.Font("Roboto Medium", 0, 18)); // NOI18N
         SeleccionarRol.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SeleccionarRol.setText("Seleccione el rol");
-        bg.add(SeleccionarRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 210, -1));
+        bg.add(SeleccionarRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 210, -1));
+
+        nuevoUsuariobtn.setBackground(new java.awt.Color(0, 134, 190));
+        nuevoUsuariobtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        nuevoUsuariotxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nuevoUsuariotxt.setText("Crear Usuario");
+        nuevoUsuariotxt.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nuevoUsuariotxtMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nuevoUsuariotxtMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nuevoUsuariotxtMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout nuevoUsuariobtnLayout = new javax.swing.GroupLayout(nuevoUsuariobtn);
+        nuevoUsuariobtn.setLayout(nuevoUsuariobtnLayout);
+        nuevoUsuariobtnLayout.setHorizontalGroup(
+            nuevoUsuariobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(nuevoUsuariotxt, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+        );
+        nuevoUsuariobtnLayout.setVerticalGroup(
+            nuevoUsuariobtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(nuevoUsuariotxt, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+        );
+
+        bg.add(nuevoUsuariobtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -231,11 +264,11 @@ int xMouse, yMouse;
     }//GEN-LAST:event_passtxtMousePressed
 
     private void entrartxtbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseEntered
-       Entrybottom.setBackground(new Color (0,153,223));
+       entrybtn.setBackground(new Color (0,153,223));
     }//GEN-LAST:event_entrartxtbtnMouseEntered
 
     private void entrartxtbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseExited
-        Entrybottom.setBackground(new Color (0,134,190) );
+        entrybtn.setBackground(new Color (0,134,190) );
     }//GEN-LAST:event_entrartxtbtnMouseExited
 
     private void entrartxtbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseClicked
@@ -267,50 +300,35 @@ int xMouse, yMouse;
         exitbtn.setForeground(Color.black);
     }//GEN-LAST:event_exittxtMouseExited
 
+    private void nuevoUsuariotxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuariotxtMouseEntered
+        nuevoUsuariobtn.setBackground(new Color (0,153,223));
+    }//GEN-LAST:event_nuevoUsuariotxtMouseEntered
+
+    private void nuevoUsuariotxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuariotxtMouseExited
+        nuevoUsuariobtn.setBackground(new Color (0,134,190));
+    }//GEN-LAST:event_nuevoUsuariotxtMouseExited
+
+    private void nuevoUsuariotxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuariotxtMouseClicked
+        crearUsuario nuevoUsuario = new crearUsuario();
+        nuevoUsuario.setVisible(true);
+        nuevoUsuario.setSize(800,500);
+        nuevoUsuario.setLocation(0,0);
+    }//GEN-LAST:event_nuevoUsuariotxtMouseClicked
+
 
     
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AdminLabel;
     private javax.swing.JTextField Admintxt;
     private javax.swing.JComboBox<String> BoxSelecRol;
-    private javax.swing.JPanel Entrybottom;
     private javax.swing.JLabel PasswordLabel;
     private javax.swing.JLabel SeleccionarRol;
     private javax.swing.JLabel TitleLabel;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel entrartxtbtn;
+    private javax.swing.JPanel entrybtn;
     private javax.swing.JPanel exitbtn;
     private javax.swing.JLabel exittxt;
     private javax.swing.JPanel header;
@@ -318,6 +336,8 @@ int xMouse, yMouse;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel nameEnterprise;
+    private javax.swing.JPanel nuevoUsuariobtn;
+    private javax.swing.JLabel nuevoUsuariotxt;
     private javax.swing.JPasswordField passtxt;
     // End of variables declaration//GEN-END:variables
 }
