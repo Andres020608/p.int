@@ -1,14 +1,15 @@
 
 package Controlador;
 
-import Vista.Joya_Descrp;
+
+import Vista.Login;
 
 
 public class LoginControlador {
     public static void main(String[] args) {
-        Joya_Descrp descripcion = new Joya_Descrp();
-    descripcion.setVisible(true);
-    descripcion.setLocationRelativeTo(null);
+        Login login = new Login();
+        login.setVisible(true);
+        login.setLocationRelativeTo(null);
     }
     
 }

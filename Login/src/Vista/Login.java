@@ -1,15 +1,16 @@
-
 package Vista;
 
 import java.awt.Color;
 
-
 public class Login extends javax.swing.JFrame {
-int xMouse, yMouse;
+    private crearUsuario nuevoUsuario;
+    private paginaInicio inicio;
+    int xMouse, yMouse;
 
     public Login() {
         initComponents();
-        
+        nuevoUsuario = new crearUsuario();
+        inicio = new paginaInicio();
     }
 
     @SuppressWarnings("unchecked")
@@ -241,38 +242,47 @@ int xMouse, yMouse;
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdmintxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdmintxtMousePressed
-        if(Admintxt.getText().equals("Ingrese el Usuario")){
-        Admintxt.setText("");
-        Admintxt.setForeground(Color.black);
+        if (Admintxt.getText().equals("Ingrese el Usuario")) {
+            Admintxt.setText("");
+            Admintxt.setForeground(Color.black);
         }
-        if(String.valueOf(passtxt.getPassword()).isEmpty()){
-        passtxt.setText("********");
-        passtxt.setForeground(Color.gray);
+        if (String.valueOf(passtxt.getPassword()).isEmpty()) {
+            passtxt.setText("********");
+            passtxt.setForeground(Color.gray);
         }
     }//GEN-LAST:event_AdmintxtMousePressed
 
     private void passtxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passtxtMousePressed
-        if(String.valueOf(passtxt.getPassword()).equals("********")){
-        passtxt.setText("");
-        passtxt.setForeground(Color.black);
+        if (String.valueOf(passtxt.getPassword()).equals("********")) {
+            passtxt.setText("");
+            passtxt.setForeground(Color.black);
         }
-        
-        if(Admintxt.getText().isEmpty()){
-        Admintxt.setText("Ingrese el Usuario");
-        Admintxt.setForeground(Color.gray);
-        }  
+
+        if (Admintxt.getText().isEmpty()) {
+            Admintxt.setText("Ingrese el Usuario");
+            Admintxt.setForeground(Color.gray);
+        }
     }//GEN-LAST:event_passtxtMousePressed
 
     private void entrartxtbtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseEntered
-       entrybtn.setBackground(new Color (0,153,223));
+        entrybtn.setBackground(new Color(0, 153, 223));
     }//GEN-LAST:event_entrartxtbtnMouseEntered
 
     private void entrartxtbtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseExited
-        entrybtn.setBackground(new Color (0,134,190) );
+        entrybtn.setBackground(new Color(0, 134, 190));
     }//GEN-LAST:event_entrartxtbtnMouseExited
 
+    protected void setInicio(paginaInicio inicio){
+        this.inicio = inicio;
+    }
+
     private void entrartxtbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseClicked
-        javax.swing.JOptionPane.showMessageDialog(this, "Intento de Login con los datos: \nAdministrador: " +Admintxt.getText()+ "\nContraseña: "+ String.valueOf(passtxt.getPassword()) +" Login "+javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        javax.swing.JOptionPane.showMessageDialog(this, "Intento de Login con los datos: \nAdministrador: " + Admintxt.getText() + "\nContraseña: " + String.valueOf(passtxt.getPassword()) + " Login " + javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        inicio.setLogin(this);
+       inicio.setVisible(true);
+        inicio.setSize(800, 500);
+        inicio.setLocation(0, 0);
+        this.setVisible(false);
     }//GEN-LAST:event_entrartxtbtnMouseClicked
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed
@@ -283,7 +293,7 @@ int xMouse, yMouse;
     private void headerMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMouseDragged
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse, y-yMouse);
+        this.setLocation(x - xMouse, y - yMouse);
     }//GEN-LAST:event_headerMouseDragged
 
     private void exittxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exittxtMousePressed
@@ -301,22 +311,24 @@ int xMouse, yMouse;
     }//GEN-LAST:event_exittxtMouseExited
 
     private void nuevoUsuariotxtMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuariotxtMouseEntered
-        nuevoUsuariobtn.setBackground(new Color (0,153,223));
+        nuevoUsuariobtn.setBackground(new Color(0, 153, 223));
     }//GEN-LAST:event_nuevoUsuariotxtMouseEntered
 
     private void nuevoUsuariotxtMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuariotxtMouseExited
-        nuevoUsuariobtn.setBackground(new Color (0,134,190));
+        nuevoUsuariobtn.setBackground(new Color(0, 134, 190));
     }//GEN-LAST:event_nuevoUsuariotxtMouseExited
-
-    private void nuevoUsuariotxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuariotxtMouseClicked
-        crearUsuario nuevoUsuario = new crearUsuario();
-        nuevoUsuario.setVisible(true);
-        nuevoUsuario.setSize(800,500);
-        nuevoUsuario.setLocation(0,0);
-    }//GEN-LAST:event_nuevoUsuariotxtMouseClicked
-
-
     
+    
+    protected void setNuevoUsuario(crearUsuario nuevoUsuario){
+        this.nuevoUsuario = nuevoUsuario;
+    }
+    private void nuevoUsuariotxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuariotxtMouseClicked
+        nuevoUsuario.setLogin(this);
+        nuevoUsuario.setVisible(true);
+        nuevoUsuario.setSize(800, 500);
+        nuevoUsuario.setLocation(0, 0);
+        this.setVisible(false);
+    }//GEN-LAST:event_nuevoUsuariotxtMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
