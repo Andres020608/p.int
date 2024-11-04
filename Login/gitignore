@@ -1,0 +1,25 @@
+# Archivos compilados
+*.class
+*.jar
+*.war
+
+# Directorios de construcción
+/build/
+/dist/
+/out/
+/target/
+
+# Archivos de NetBeans
+nbproject/
+nbbuild/
+dist/
+
+# Archivos de IntelliJ
+.idea/
+*.iml
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+
