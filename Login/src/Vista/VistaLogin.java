@@ -1,9 +1,11 @@
 package Vista;
 
+import Controlador.LoginControlador;
 import java.awt.Color;
 
 public class VistaLogin extends javax.swing.JFrame {
     private viewCrearUsuario nuevoUsuario;
+    private LoginControlador loginControlador;
     private paginaInicio inicio;
     int xMouse, yMouse;
 
@@ -186,7 +188,7 @@ public class VistaLogin extends javax.swing.JFrame {
         bg.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         BoxSelecRol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        BoxSelecRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Empleado" }));
+        BoxSelecRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "\"1 -Administrador\"", "\"2-Empleado\"" }));
         BoxSelecRol.setToolTipText("Seleccione un rol");
         BoxSelecRol.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BoxSelecRol.setName(""); // NOI18N
@@ -277,15 +279,14 @@ public class VistaLogin extends javax.swing.JFrame {
     }
 
     private void entrartxtbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseClicked
-        javax.swing.JOptionPane.showMessageDialog(this, "Intento de Login con los datos: \nAdministrador: " + Admintxt.getText() + "\nContraseña: " + String.valueOf(passtxt.getPassword()) + " Login " + javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        inicio.setLogin(this);
-        inicio.setVisible(true);
-        inicio.setSize(800, 500);
-        inicio.setLocation(0, 0);
-        this.setVisible(false);
+        
+        
         String Usuario = Admintxt.getText();
         String Contraseña = new String(passtxt.getPassword());
-        String tipoUsuario = BoxSelecRol.getSelectedItem().toString();
+        String rolSeleccionado = BoxSelecRol.getSelectedItem().toString();
+        int Rol = Integer.parseInt(rolSeleccionado.split(" - ")[0]);
+        loginControlador.verificacionUsuario(Usuario, Contraseña, Rol);
+        
     }//GEN-LAST:event_entrartxtbtnMouseClicked
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed

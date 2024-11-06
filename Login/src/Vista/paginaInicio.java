@@ -3,7 +3,7 @@ package Vista;
 
 
 public class paginaInicio extends javax.swing.JFrame {
-    private VistaLogin login;
+    private VistaLogin vistaLogin;
  
     public paginaInicio() {
         initComponents();
@@ -288,8 +288,8 @@ public class paginaInicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    protected void setLogin(VistaLogin login){
-        this.login= login;
+    public void setVistaLogin(VistaLogin vistaLogin){
+        this.vistaLogin= vistaLogin;
     }
 
 

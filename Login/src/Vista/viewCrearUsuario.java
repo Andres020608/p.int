@@ -165,15 +165,16 @@ public class viewCrearUsuario extends javax.swing.JFrame {
         crearUsuarioLabel.add(logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 180, 180));
 
         registrarbtn.setBackground(new java.awt.Color(0, 134, 190));
+        registrarbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registrarbtnMouseClicked(evt);
+            }
+        });
 
         registrartxt.setBackground(new java.awt.Color(0, 134, 190));
         registrartxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrartxt.setText("Registrar Usuario");
-        registrartxt.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                registrartxtMouseClicked(evt);
-            }
-        });
+        registrartxt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout registrarbtnLayout = new javax.swing.GroupLayout(registrarbtn);
         registrarbtn.setLayout(registrarbtnLayout);
@@ -216,24 +217,26 @@ public class viewCrearUsuario extends javax.swing.JFrame {
     }
    
     private void usuarioPreguntatxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_usuarioPreguntatxtMouseClicked
-       login.setNuevoUsuario(this);
-       login.setVisible(true);
+        login.setNuevoUsuario(this);
+        login.setVisible(true);
         login.setSize(800, 500);
         login.setLocation(0, 0);
         this.setVisible(false);
     }//GEN-LAST:event_usuarioPreguntatxtMouseClicked
 
-    private void registrartxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrartxtMouseClicked
-        String nombre = nombreTextfield.getText();
+    private void registrarbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarbtnMouseClicked
+          String nombre = nombreTextfield.getText();
         String apellido = apellidoTextfield.getText();
         String correo = correoTextfield.getText();
         String telefono = telefonoTextfield.getText();
-        String usuario = usuarioTextfield.getText();
+        String nombre_usuario = usuarioTextfield.getText();
         String contraseña = new String(contraseñapasswordfield.getPassword());
-        LocalDate  fechaCreacion = LocalDate.now();
+        Date  fechaCreacion = Date.valueOf(LocalDate.now());
         String rol = rolDesplegable.getSelectedItem().toString();
         
-    }//GEN-LAST:event_registrartxtMouseClicked
+        UserController userController = new UserController();
+        userController.traerDatosUsuario( nombre_usuario, fechaCreacion, contraseña, nombre, apellido, correo, telefono);
+    }//GEN-LAST:event_registrarbtnMouseClicked
    
     public String getNombre() {
         return nombreTextfield.getText();
