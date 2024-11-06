@@ -184,11 +184,6 @@ public class Agregar__Modificar extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, 30));
 
         jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ctionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 141, 30));
 
         jLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -227,12 +222,6 @@ public class Agregar__Modificar extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 110, 30));
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ctionPerformed(evt);
-            }
-        });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 141, 30));
         getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 141, 30));
 
@@ -256,26 +245,18 @@ public class Agregar__Modificar extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         getContentPane().add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 320, 180, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField3ctionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ctionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ctionPerformed
-
-    private void jTextField4ctionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ctionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ctionPerformed
 
 
 
