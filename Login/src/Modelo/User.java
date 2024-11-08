@@ -1,6 +1,7 @@
 package Modelo;
 
 import Db.connection;
+import Interfaces.Mensaje;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,12 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Date;
+import javax.swing.JOptionPane;
 
 
 
 
-public class User {
-
+public class User implements Mensaje{
+    //User user = new User();
     protected int id_usuario;
     protected String nombre_usuario;
     protected Date fecha_creacion;
@@ -124,16 +126,16 @@ public class User {
     
     public static void insertUser(User user) {
         Connection con = connection.getConnection();
-        String sql = "INSERT INTO usuario (id_usuario, nombre_usuario, fecha_creacion, password, tipo_usuario_id_tipo_usua, persona_id_persona) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO usuario (nombre_usuario,fecha_creacion,password,tipo_usuario_id_tipo_usua,persona_id_persona) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
-            statement.setInt(1, user.getId_usuario());
-            statement.setString(2, user.getNombre_usuario());
-            statement.setDate(3, new java.sql.Date(user.getFecha_creacion().getTime())); // Convertir Date a java.sql.Date
-            statement.setString(4, user.getPassword());
-            statement.setInt(5, user.getTipo_usuario_id_tipo_usua());
-            statement.setInt(6, user.getPersona_id_persona());
+            statement.setString(1, user.getNombre_usuario());
+            statement.setDate(2, new java.sql.Date(user.getFecha_creacion().getTime())); // Convertir Date a java.sql.Date
+            statement.setString(3, user.getPassword());
+            statement.setInt(4, user.getTipo_usuario_id_tipo_usua());
+            statement.setInt(5, user.getPersona_id_persona());
 
             statement.executeUpdate();
+            user.mostrarMensaje("Usuario ingresado correctamente");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -164,26 +166,32 @@ public class User {
 
    }
    
+             @Override
+            public void mostrarMensaje(String mensaje){
+               JOptionPane.showMessageDialog(null, mensaje, "Atencion", JOptionPane.INFORMATION_MESSAGE);
+}
+   
     public static void insertPerson(User user) {
         Connection con = connection.getConnection();
-        String sql = "INSERT INTO persona (id_persona, nombre, apellido, correo, telefono) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO persona ( nombre, apellido, correo, telefono) VALUES ( ?, ?, ?, ?)";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
-            statement.setInt(1, user.getId_persona());
-            statement.setString(2, user.getNombre());
-            statement.setString(3, user.getApellido());
-            statement.setString(4, user.getCorreo());
-            statement.setString(5, user.getTelefono());
+            statement.setString(1, user.getNombre());
+            statement.setString(2, user.getApellido());
+            statement.setString(3, user.getCorreo());
+            statement.setString(4, user.getTelefono());
 
             statement.executeUpdate();
+  
+            user.mostrarMensaje("Usuario ingresado correctamente");
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     // Método para obtener todas las personas
-    public static List<User> getAllpersons() {
+    public static ArrayList<User> getAllpersons() {
         Connection con = connection.getConnection();
-        List<User> persons = new ArrayList<>();
+        ArrayList<User> persons = new ArrayList<>();
 
         String sql = "SELECT * FROM persona";
         try (PreparedStatement statement = con.prepareStatement(sql)) {
@@ -197,11 +205,21 @@ public class User {
                 user.setTelefono(rs.getString("telefono"));
 
                 persons.add(user);
+             
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return persons;
     }
- 
+    public void traerPersona (ArrayList<User> persons){
+        getAllpersons();
+        for(int i=0;i<persons.size();i++){
+            User obj =  persons.get(i);
+            int id_persona = obj.getId_persona();
+            String nombrePersona = obj.getNombre();
+            
+    }
+
+}
 }

@@ -3,7 +3,7 @@ import Interfaces.Mensaje;
 import Modelo.Kardex;
 import java.util.List;
 
-public class ViewKardex implements Mensaje {
+public class ViewKardex  {
     public void displayListKardexes(List<Kardex> Kardexes) {
         System.out.println(" == Lista de Kardex == ");
         for (Kardex kardex : Kardexes) {

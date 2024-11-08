@@ -13,7 +13,7 @@ public ProductController (ViewProduct view ){
 
     public void insertNewProduct(Product newProduct){
         Product.insertProduct(newProduct);
-        view.mostrarMensaje("\nJoya guardada correctamente!");
+        //view.mostrarMensaje("\nJoya guardada correctamente!");
     }
     public void displayAllProducts() {
         List<Product> products = Product.getAllProducts();

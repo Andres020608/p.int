@@ -3,7 +3,7 @@ import Interfaces.Mensaje;
 import Modelo.User;
 import java.util.List;
 
-public class ViewUser implements  Mensaje{
+public class ViewUser {
     public void displayListUsers(List<User> Users) {
         System.out.println(" == Lista de usuarios == ");
         for (User user : Users) {

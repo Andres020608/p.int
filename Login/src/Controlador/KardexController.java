@@ -13,7 +13,7 @@ public class KardexController {
 
     public void insertNewKardex(Kardex newKardex){
         Kardex.insertKardex(newKardex);
-        view.mostrarMensaje("\nKardex guardado correctamente!");
+        //view.mostrarMensaje("\nKardex guardado correctamente!");
     }
     public void displayAllKardexes() {
         List<Kardex> kardexes = Kardex.getAllkardexes();

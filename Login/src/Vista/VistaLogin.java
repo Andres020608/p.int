@@ -2,6 +2,7 @@ package Vista;
 
 import Controlador.LoginControlador;
 import java.awt.Color;
+import Modelo.Login;
 
 public class VistaLogin extends javax.swing.JFrame {
     private viewCrearUsuario nuevoUsuario;
@@ -38,6 +39,7 @@ public class VistaLogin extends javax.swing.JFrame {
         SeleccionarRol = new javax.swing.JLabel();
         nuevoUsuariobtn = new javax.swing.JPanel();
         nuevoUsuariotxt = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -188,7 +190,7 @@ public class VistaLogin extends javax.swing.JFrame {
         bg.add(icon, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         BoxSelecRol.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
-        BoxSelecRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "\"1 -Administrador\"", "\"2-Empleado\"" }));
+        BoxSelecRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2" }));
         BoxSelecRol.setToolTipText("Seleccione un rol");
         BoxSelecRol.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BoxSelecRol.setName(""); // NOI18N
@@ -228,6 +230,9 @@ public class VistaLogin extends javax.swing.JFrame {
         );
 
         bg.add(nuevoUsuariobtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, 30));
+
+        jLabel1.setText("1-Administrador o 2-Empleado");
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,13 +284,13 @@ public class VistaLogin extends javax.swing.JFrame {
     }
 
     private void entrartxtbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseClicked
-        
-        
+        Login login = new Login();
+        LoginControlador loginControlador = new LoginControlador();
         String Usuario = Admintxt.getText();
         String Contraseña = new String(passtxt.getPassword());
         String rolSeleccionado = BoxSelecRol.getSelectedItem().toString();
         int Rol = Integer.parseInt(rolSeleccionado.split(" - ")[0]);
-        loginControlador.verificacionUsuario(Usuario, Contraseña, Rol);
+        loginControlador.verificaUsuario(Usuario, Contraseña, Rol);
         
     }//GEN-LAST:event_entrartxtbtnMouseClicked
 
@@ -349,6 +354,7 @@ public class VistaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel exittxt;
     private javax.swing.JPanel header;
     private javax.swing.JLabel icon;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JLabel nameEnterprise;

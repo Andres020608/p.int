@@ -7,17 +7,19 @@ import Vista.VistaLogin;
 
 
 public class LoginControlador {
-    Login login = new Login();
+
 public void iniciarLogin(){
-        VistaLogin login = new VistaLogin();
-        login.setVisible(true);
-        login.setLocationRelativeTo(null);
+        VistaLogin vistaLogin = new VistaLogin();
+        vistaLogin.setVisible(true);
+        vistaLogin.setLocationRelativeTo(null);
         
     }
-    public void verificacionUsuario(String Nombre, String Contraseña, int Rol){
+    public void verificaUsuario(String Nombre, String Contraseña, int Rol){
+        Login login = new Login();
         login.setUsuario(Nombre);
         login.setContraseña(Contraseña);
         login.setRol(Rol);
+        login.verificacionUsuario(login);
     }
 
 }

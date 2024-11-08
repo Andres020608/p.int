@@ -3,7 +3,7 @@ import Interfaces.Mensaje;
 import Modelo.Product;
 import java.util.List;
 
-public class ViewProduct implements Mensaje {
+public class ViewProduct  {
     public void displayListProducts(List<Product> Products) {
         System.out.println(" == Lista de Joyas == ");
         for (Product product : Products) {
