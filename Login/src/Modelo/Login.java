@@ -13,16 +13,25 @@ import javax.swing.JOptionPane;
 import Controlador.LoginControlador;
 
 public class Login {
+
     protected int Rol;
     protected String Usuario;
     protected String Contraseña;
+    protected int Id_Usuario;
 
-    
     paginaInicio inicio = new paginaInicio();
     VistaLogin vistaLogin = new VistaLogin();
-    LoginControlador loginControlador = new LoginControlador();
+
     public int getRol() {
         return Rol;
+    }
+
+    public int getId_Usuario() {
+        return Id_Usuario;
+    }
+
+    public void setId_Usuario() {
+        this.Id_Usuario = Id_Usuario;
     }
 
     public void setRol(int Rol) {
@@ -44,16 +53,17 @@ public class Login {
     public void setContraseña(String Contraseña) {
         this.Contraseña = Contraseña;
     }
-    
-    public void setPaginaInicio(paginaInicio inicio){
+
+    public void setPaginaInicio(paginaInicio inicio) {
         this.inicio = inicio;
     }
-    
-    public void verificacionUsuario(Login login) {
 
+    public void verificacionUsuario(Login login) {
+        User user = new User();
         String usuario = getUsuario();
         String contraseña = getContraseña();
         int rol = getRol();
+        int id_usuario = getId_Usuario();
 
         Connection con = connection.getConnection();
 
@@ -63,22 +73,28 @@ public class Login {
             statement.setString(1, usuario);
             statement.setString(2, contraseña);
             statement.setInt(3, rol);
-            System.out.println("Usuario: " + usuario);
-            System.out.println("Contraseña: " + contraseña);
-            System.out.println("Rol: " + rol);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
+                this.Id_Usuario = rs.getInt("id_usuario");
                 JOptionPane.showMessageDialog(null, "Usuario validado correctamente");
+                int usuario_id = this.Id_Usuario;
+                paginaInicio inicio = new paginaInicio();
                 inicio.setVistaLogin(vistaLogin);
                 inicio.setVisible(true);
                 inicio.setSize(800, 500);
                 inicio.setLocation(0, 0);
                 vistaLogin.setVisible(false);
+
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario, contraseña o rol no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+    }
+
+    public int traerIdUsuario() {
+        return getId_Usuario();
     }
 }

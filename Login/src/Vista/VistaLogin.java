@@ -12,6 +12,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
     public VistaLogin() {
         initComponents();
+        
         nuevoUsuario = new viewCrearUsuario();
         inicio = new paginaInicio();
     }
@@ -258,6 +259,7 @@ public class VistaLogin extends javax.swing.JFrame {
             passtxt.setForeground(Color.gray);
         }
     }//GEN-LAST:event_AdmintxtMousePressed
+    
 
     private void passtxtMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passtxtMousePressed
         if (String.valueOf(passtxt.getPassword()).equals("********")) {

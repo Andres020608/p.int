@@ -83,6 +83,8 @@ public class viewCrearUsuario extends javax.swing.JFrame {
         crearUsuariotxt.setText("Crear Usuario");
         crearUsuarioLabel.add(crearUsuariotxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 30));
 
+        usuarioPreguntabtn.setBackground(new java.awt.Color(255, 255, 255));
+
         usuarioPreguntatxt.setFont(new java.awt.Font("Roboto", 1, 12)); // NOI18N
         usuarioPreguntatxt.setForeground(new java.awt.Color(51, 51, 255));
         usuarioPreguntatxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
