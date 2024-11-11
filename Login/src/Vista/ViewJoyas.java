@@ -12,6 +12,12 @@ import java.sql.PreparedStatement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.*;
+import java.awt.*;
+import java.awt.print.*;
+import java.util.Locale;
+import javax.swing.JTable;
+import java.awt.event.*;
 
 public class ViewJoyas extends javax.swing.JFrame {
 
@@ -27,10 +33,7 @@ public class ViewJoyas extends javax.swing.JFrame {
         consultar();
     }
 
-    public static void main(String[] args) {
-        new ViewJoyas().setVisible(true);
 
-    }
 
     void consultar() {
         String sql = "Select * from joya";
@@ -62,46 +65,46 @@ public class ViewJoyas extends javax.swing.JFrame {
     }
 
     void agregar() {
-    String nombre = nombreJoyatxt.getText();
-    int peso = Integer.parseInt(pesoJoyatxt.getText());
-    double cantidad = Double.parseDouble(cantidadJoyatxt.getText());
-    double precio = Double.parseDouble(precioJoyatxt.getText());
-    double costo = Double.parseDouble(costoJoyatxt.getText());
-    int idUsuario = Integer.parseInt(usuarioIdtxt.getText());
-    int idTipoJoya = Integer.parseInt(idTipoJoyatxt.getText());
+        String nombre = nombreJoyatxt.getText();
+        int peso = Integer.parseInt(pesoJoyatxt.getText());
+        double cantidad = Double.parseDouble(cantidadJoyatxt.getText());
+        double precio = Double.parseDouble(precioJoyatxt.getText());
+        double costo = Double.parseDouble(costoJoyatxt.getText());
+        int idUsuario = Integer.parseInt(usuarioIdtxt.getText());
+        int idTipoJoya = Integer.parseInt(idTipoJoyatxt.getText());
 
-    try {
-        if (nombre.isEmpty() || peso == 0 || cantidad == 0 || precio == 0 || costo == 0 || idUsuario == 0 || idTipoJoya == 0) {
-            JOptionPane.showMessageDialog(null, "Por favor, llena todos los campos.");
-        } else {
-            String sql = "INSERT INTO joya (nombre, peso, cantidad_saldo, precio_venta, costo_joya, usuario_id_usuario, tipo_joya_id_tipo_joya) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            Connection con = connection.getConnection();
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, nombre);
-            pstmt.setInt(2, peso);
-            pstmt.setDouble(3, cantidad);
-            pstmt.setDouble(4, precio);
-            pstmt.setDouble(5, costo);
-            pstmt.setInt(6, idUsuario);
-            pstmt.setInt(7, idTipoJoya);
-            pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Nueva joya registrada");
-            limpiartabla();
-        }
-    } catch (SQLException | NumberFormatException ex) {
-        JOptionPane.showMessageDialog(null, "Error al agregar la joya: " + ex.getMessage());
-    }
-}
-         void limpiartabla() {
-    if (modelo.getRowCount() > 0) {
-        for (int i = modelo.getRowCount() - 1; i >= 0; i--) {
-            modelo.removeRow(i);
+        try {
+            if (nombre.isEmpty() || peso == 0 || cantidad == 0 || precio == 0 || costo == 0 || idUsuario == 0 || idTipoJoya == 0) {
+                JOptionPane.showMessageDialog(null, "Por favor, llena todos los campos.");
+            } else {
+                String sql = "INSERT INTO joya (nombre, peso, cantidad_saldo, precio_venta, costo_joya, usuario_id_usuario, tipo_joya_id_tipo_joya) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                Connection con = connection.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, nombre);
+                pstmt.setInt(2, peso);
+                pstmt.setDouble(3, cantidad);
+                pstmt.setDouble(4, precio);
+                pstmt.setDouble(5, costo);
+                pstmt.setInt(6, idUsuario);
+                pstmt.setInt(7, idTipoJoya);
+                pstmt.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Nueva joya registrada");
+                limpiartabla();
+            }
+        } catch (SQLException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Error al agregar la joya: " + ex.getMessage());
         }
     }
-}
-     
 
-        @SuppressWarnings("unchecked")
+    void limpiartabla() {
+        if (modelo.getRowCount() > 0) {
+            for (int i = modelo.getRowCount() - 1; i >= 0; i--) {
+                modelo.removeRow(i);
+            }
+        }
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -126,6 +129,7 @@ public class ViewJoyas extends javax.swing.JFrame {
         agregarbtn = new javax.swing.JButton();
         modificarbtn = new javax.swing.JButton();
         eliminarbtn = new javax.swing.JButton();
+        imprimirbtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         joyatable = new javax.swing.JTable();
@@ -248,6 +252,13 @@ public class ViewJoyas extends javax.swing.JFrame {
             }
         });
 
+        imprimirbtn.setText("Imprimir");
+        imprimirbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -260,6 +271,9 @@ public class ViewJoyas extends javax.swing.JFrame {
                 .addGap(128, 128, 128)
                 .addComponent(eliminarbtn)
                 .addGap(133, 133, 133))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(imprimirbtn)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +283,8 @@ public class ViewJoyas extends javax.swing.JFrame {
                     .addComponent(agregarbtn)
                     .addComponent(modificarbtn)
                     .addComponent(eliminarbtn))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(imprimirbtn))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 780, -1));
@@ -315,101 +330,112 @@ public class ViewJoyas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarbtnActionPerformed
-           agregar();
+        agregar();
         consultar();
     }//GEN-LAST:event_agregarbtnActionPerformed
 
     private void joyatableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_joyatableMouseClicked
         int fila = joyatable.getSelectedRow();
-    if(fila == -1) {
-        JOptionPane.showMessageDialog(null, "No se selecciono fila");
-    } else {
-        idc = Integer.parseInt(joyatable.getValueAt(fila, 0).toString());
-        String nombre = joyatable.getValueAt(fila, 1).toString();
-        int peso = Integer.parseInt(joyatable.getValueAt(fila, 2).toString());
-        double cantidad = Double.parseDouble(joyatable.getValueAt(fila, 3).toString());
-        double precio = Double.parseDouble(joyatable.getValueAt(fila, 4).toString());
-        double costo = Double.parseDouble(joyatable.getValueAt(fila, 5).toString());
-        Date fecha = (Date) joyatable.getValueAt(fila, 6);
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaString = sdf.format(fecha);
-        int idUsuario = Integer.parseInt(joyatable.getValueAt(fila, 7).toString());
-        int idTipoJoya = Integer.parseInt(joyatable.getValueAt(fila, 8).toString());
- 
-        idJoyatxt.setText(String.valueOf(idc));
-        nombreJoyatxt.setText(nombre);
-        pesoJoyatxt.setText(String.valueOf(peso));
-        cantidadJoyatxt.setText(String.valueOf(cantidad));
-        precioJoyatxt.setText(String.valueOf(precio));
-        costoJoyatxt.setText(String.valueOf(costo));
-        usuarioIdtxt.setText(String.valueOf(idUsuario));
-        idTipoJoyatxt.setText(String.valueOf(idTipoJoya));
-    }
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "No se selecciono fila");
+        } else {
+            idc = Integer.parseInt(joyatable.getValueAt(fila, 0).toString());
+            String nombre = joyatable.getValueAt(fila, 1).toString();
+            int peso = Integer.parseInt(joyatable.getValueAt(fila, 2).toString());
+            double cantidad = Double.parseDouble(joyatable.getValueAt(fila, 3).toString());
+            double precio = Double.parseDouble(joyatable.getValueAt(fila, 4).toString());
+            double costo = Double.parseDouble(joyatable.getValueAt(fila, 5).toString());
+            Date fecha = (Date) joyatable.getValueAt(fila, 6);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaString = sdf.format(fecha);
+            int idUsuario = Integer.parseInt(joyatable.getValueAt(fila, 7).toString());
+            int idTipoJoya = Integer.parseInt(joyatable.getValueAt(fila, 8).toString());
+
+            idJoyatxt.setText(String.valueOf(idc));
+            nombreJoyatxt.setText(nombre);
+            pesoJoyatxt.setText(String.valueOf(peso));
+            cantidadJoyatxt.setText(String.valueOf(cantidad));
+            precioJoyatxt.setText(String.valueOf(precio));
+            costoJoyatxt.setText(String.valueOf(costo));
+            usuarioIdtxt.setText(String.valueOf(idUsuario));
+            idTipoJoyatxt.setText(String.valueOf(idTipoJoya));
+        }
     }//GEN-LAST:event_joyatableMouseClicked
-    
-    
+
+
     private void modificarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarbtnActionPerformed
         modificar();
     }//GEN-LAST:event_modificarbtnActionPerformed
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
-     eliminar();
-     consultar();
+        eliminar();
+        consultar();
     }//GEN-LAST:event_eliminarbtnActionPerformed
-    
-    void modificar() {
-    String nombre = nombreJoyatxt.getText();
-    int peso = Integer.parseInt(pesoJoyatxt.getText());
-    double cantidad = Double.parseDouble(cantidadJoyatxt.getText());
-    double precio = Double.parseDouble(precioJoyatxt.getText());
-    double costo = Double.parseDouble(costoJoyatxt.getText());
-    int idUsuario = Integer.parseInt(usuarioIdtxt.getText());
-    int idTipoJoya = Integer.parseInt(idTipoJoyatxt.getText());
 
-    try {
-        if (nombre.isEmpty() || peso == 0 || cantidad == 0 || precio == 0 || costo == 0 || idUsuario == 0 || idTipoJoya == 0) {
-            JOptionPane.showMessageDialog(null, "Por favor, llena todos los campos.");
-        } else {
-            String sql = "UPDATE joya SET nombre=?, peso=?, cantidad_saldo=?, precio_venta=?, costo_joya=?, usuario_id_usuario=?, tipo_joya_id_tipo_joya=? WHERE id_joya=?";
-            Connection con = connection.getConnection();
-            PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, nombre);
-            pstmt.setInt(2, peso);
-            pstmt.setDouble(3, cantidad);
-            pstmt.setDouble(4, precio);
-            pstmt.setDouble(5, costo);
-            pstmt.setInt(6, idUsuario);
-            pstmt.setInt(7, idTipoJoya);
-            pstmt.setInt(8, idc);
-            pstmt.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos de joya actualizados");
-            limpiartabla();
-            consultar(); // Para actualizar la tabla con los cambios
+    private void imprimirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirbtnActionPerformed
+        MessageFormat header = new MessageFormat(" Reporte de Joyas ");
+        MessageFormat footer = new MessageFormat("Pagina {0,number,integer} ");
+        try {
+
+            joyatable.print(JTable.PrintMode.FIT_WIDTH, header, footer);
+
+        } catch (java.awt.print.PrinterException e) {
+            System.err.format(" cannot print ", e.getMessage());
+
         }
-    } catch (SQLException | NumberFormatException ex) {
-        JOptionPane.showMessageDialog(null, "Error al modificar la joya: " + ex.getMessage());
+    }//GEN-LAST:event_imprimirbtnActionPerformed
+
+    void modificar() {
+        String nombre = nombreJoyatxt.getText();
+        int peso = Integer.parseInt(pesoJoyatxt.getText());
+        double cantidad = Double.parseDouble(cantidadJoyatxt.getText());
+        double precio = Double.parseDouble(precioJoyatxt.getText());
+        double costo = Double.parseDouble(costoJoyatxt.getText());
+        int idUsuario = Integer.parseInt(usuarioIdtxt.getText());
+        int idTipoJoya = Integer.parseInt(idTipoJoyatxt.getText());
+
+        try {
+            if (nombre.isEmpty() || peso == 0 || cantidad == 0 || precio == 0 || costo == 0 || idUsuario == 0 || idTipoJoya == 0) {
+                JOptionPane.showMessageDialog(null, "Por favor, llena todos los campos.");
+            } else {
+                String sql = "UPDATE joya SET nombre=?, peso=?, cantidad_saldo=?, precio_venta=?, costo_joya=?, usuario_id_usuario=?, tipo_joya_id_tipo_joya=? WHERE id_joya=?";
+                Connection con = connection.getConnection();
+                PreparedStatement pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, nombre);
+                pstmt.setInt(2, peso);
+                pstmt.setDouble(3, cantidad);
+                pstmt.setDouble(4, precio);
+                pstmt.setDouble(5, costo);
+                pstmt.setInt(6, idUsuario);
+                pstmt.setInt(7, idTipoJoya);
+                pstmt.setInt(8, idc);
+                pstmt.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Datos de joya actualizados");
+                limpiartabla();
+                consultar(); // Para actualizar la tabla con los cambios
+            }
+        } catch (SQLException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Error al modificar la joya: " + ex.getMessage());
+        }
     }
-    }
-    void eliminar(){
+
+    void eliminar() {
         int fila = joyatable.getSelectedRow();
         try {
-            if(fila<0){
+            if (fila < 0) {
                 JOptionPane.showMessageDialog(null, "Joya no seleccionada");
-            limpiartabla();
-            }else{
-                String sql = "delete from joya where id_joya="+idc;
-                 Connection con = connection.getConnection();
-                 st = con.createStatement();
-                 st.executeUpdate(sql);
-                 limpiartabla();
+                limpiartabla();
+            } else {
+                String sql = "delete from joya where id_joya=" + idc;
+                Connection con = connection.getConnection();
+                st = con.createStatement();
+                st.executeUpdate(sql);
+                limpiartabla();
             }
         } catch (Exception e) {
         }
-    
-}
-    
 
-
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -419,6 +445,7 @@ public class ViewJoyas extends javax.swing.JFrame {
     private javax.swing.JButton eliminarbtn;
     private javax.swing.JTextField idJoyatxt;
     private javax.swing.JTextField idTipoJoyatxt;
+    private javax.swing.JButton imprimirbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -14,7 +14,6 @@ public class VistaLogin extends javax.swing.JFrame {
         initComponents();
         
         nuevoUsuario = new viewCrearUsuario();
-        inicio = new paginaInicio();
     }
 
     @SuppressWarnings("unchecked")
@@ -284,16 +283,22 @@ public class VistaLogin extends javax.swing.JFrame {
     protected void setInicio(paginaInicio inicio){
         this.inicio = inicio;
     }
+    
 
     private void entrartxtbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_entrartxtbtnMouseClicked
-        Login login = new Login();
-        LoginControlador loginControlador = new LoginControlador();
-        String Usuario = Admintxt.getText();
-        String Contraseña = new String(passtxt.getPassword());
-        String rolSeleccionado = BoxSelecRol.getSelectedItem().toString();
-        int Rol = Integer.parseInt(rolSeleccionado.split(" - ")[0]);
-        loginControlador.verificaUsuario(Usuario, Contraseña, Rol);
-        
+    LoginControlador loginControlador = new LoginControlador();
+    String Usuario = Admintxt.getText();
+    String Contraseña = new String(passtxt.getPassword());
+    String rolSeleccionado = BoxSelecRol.getSelectedItem().toString();
+    int Rol = Integer.parseInt(rolSeleccionado.split(" - ")[0]);
+
+    loginControlador.verificaUsuario(Usuario, Contraseña, Rol);
+
+    if (inicio == null) {  // Solo crea la instancia si no ha sido inicializada antes
+        inicio = new paginaInicio();
+    }
+
+
     }//GEN-LAST:event_entrartxtbtnMouseClicked
 
     private void headerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_headerMousePressed

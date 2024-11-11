@@ -13,6 +13,7 @@ public class Joya_Descrp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         nameEnterprise = new javax.swing.JLabel();
@@ -244,6 +245,7 @@ public class Joya_Descrp extends javax.swing.JFrame {
     private javax.swing.JButton iniciarSesionbtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;

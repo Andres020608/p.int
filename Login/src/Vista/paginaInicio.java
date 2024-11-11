@@ -1,12 +1,45 @@
-
 package Vista;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 public class paginaInicio extends javax.swing.JFrame {
+
     private VistaLogin vistaLogin;
- 
+    private ViewJoyas viewJoyas;
+    private ViewUser viewUser;
+
     public paginaInicio() {
         initComponents();
+        JPopupMenu popupMenu = new JPopupMenu();
+
+        // Crear las opciones del menú
+        JMenuItem opcion1 = new JMenuItem("Gestionar joya");
+        JMenuItem opcion2 = new JMenuItem("Gestionar Usuarios");
+        JMenuItem opcion3 = new JMenuItem("Cerrar sesion");
+
+        // Agregar las opciones al popupMenu
+        popupMenu.add(opcion1);
+        popupMenu.add(opcion2);
+        popupMenu.add(opcion3);
+
+        // Agregar acción para cada opción
+        opcion1.addActionListener(e -> new ViewJoyas().setVisible(true));
+        opcion2.addActionListener(e -> new ViewUser().setVisible(true));
+        opcion3.addActionListener(e -> {
+            this.dispose(); // Cierra la ventana actual
+            vistaLogin.setVisible(true); // Muestra la ventana de inicio de sesión
+        });
+        // Añadir un MouseListener al JLabel que funciona como ícono
+        usuarioIcono.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Mostrar el menú en la posición del clic
+                popupMenu.show(usuarioIcono, e.getX(), e.getY());
+            }
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -62,7 +95,7 @@ public class paginaInicio extends javax.swing.JFrame {
 
         joyaDesplegable.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Anillos", "Collares", "Aretes" }));
         joyaDesplegable.setBorder(null);
-        header.add(joyaDesplegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, 40));
+        header.add(joyaDesplegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, 30));
 
         tipoJoyatxt.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         tipoJoyatxt.setText("Tipos de joyas");
@@ -77,27 +110,30 @@ public class paginaInicio extends javax.swing.JFrame {
         irbtn.setLayout(irbtnLayout);
         irbtnLayout.setHorizontalGroup(
             irbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(irtxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+            .addGroup(irbtnLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(irtxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(3, 3, 3))
         );
         irbtnLayout.setVerticalGroup(
             irbtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(irbtnLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(irtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(irtxt)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        header.add(irbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 30, -1));
+        header.add(irbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 3, 30, 60));
 
         buscarIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/buscar.png"))); // NOI18N
-        header.add(buscarIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 30, 50));
+        header.add(buscarIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 30, 40));
 
         usuarioIcono.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usuarioIcono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/account_login_log_in_icon_250759.png"))); // NOI18N
-        header.add(usuarioIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, 30, 50));
-        header.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 10));
+        header.add(usuarioIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 0, 30, 40));
+        header.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 10));
 
-        paginaInicioPanel.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, -1));
+        paginaInicioPanel.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 50));
         paginaInicioPanel.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 1000, -1));
 
         javax.swing.GroupLayout imagenInicioLayout = new javax.swing.GroupLayout(imagenInicio);
@@ -287,11 +323,17 @@ public class paginaInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void setVistaLogin(VistaLogin vistaLogin){
-        this.vistaLogin= vistaLogin;
+    public void setviewUser(ViewUser viewuser) {
+        this.viewUser = viewUser;
     }
 
+    public void setviewJoyas(ViewJoyas viewJoyas) {
+        this.viewJoyas = viewJoyas;
+    }
+
+    public void setVistaLogin(VistaLogin vistaLogin) {
+        this.vistaLogin = vistaLogin;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel buscarIcono;
