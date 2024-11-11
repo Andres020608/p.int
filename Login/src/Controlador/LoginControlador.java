@@ -5,9 +5,11 @@ package Controlador;
 import Modelo.Login;
 import Vista.VistaLogin;
 import Vista.viewCrearUsuario;
+import Modelo.User;
 
 
 public class LoginControlador {
+    User user = new User();
     Login login = new Login();
     int id_usuario;
     public int getId_usuario() {
@@ -17,9 +19,12 @@ public class LoginControlador {
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
     }
-     public void actualizarIdUsuario() {
+     public int actualizarIdUsuario() {
+         User.getAllusers();
         id_usuario = login.traerIdUsuario(); 
-    }
+         System.out.println(id_usuario);
+    return id_usuario;
+     }
 
 public void iniciarLogin(){
         VistaLogin vistaLogin = new VistaLogin();
