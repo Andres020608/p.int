@@ -297,7 +297,7 @@ public class VistaLogin extends javax.swing.JFrame {
     if (inicio == null) {  // Solo crea la instancia si no ha sido inicializada antes
         inicio = new paginaInicio();
     }
-
+    inicio.setSize(1050, 655);
 
     }//GEN-LAST:event_entrartxtbtnMouseClicked
 
