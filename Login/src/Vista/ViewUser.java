@@ -46,7 +46,6 @@ public class ViewUser extends javax.swing.JFrame {
         estadotextfield = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         modificarbtn = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         usertable = new javax.swing.JTable();
@@ -161,25 +160,19 @@ public class ViewUser extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Inhabilitar");
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(197, 197, 197)
+                .addGap(363, 363, 363)
                 .addComponent(modificarbtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(181, 181, 181))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(modificarbtn)
-                    .addComponent(jButton2))
+                .addComponent(modificarbtn)
                 .addGap(0, 15, Short.MAX_VALUE))
         );
 
@@ -364,7 +357,6 @@ public class ViewUser extends javax.swing.JFrame {
     private javax.swing.JLabel estadotxt;
     private javax.swing.JTextField fechaCreaciontextfield;
     private javax.swing.JTextField idUsuariotextfield;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

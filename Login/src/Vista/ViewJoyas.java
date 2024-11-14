@@ -369,7 +369,7 @@ public class ViewJoyas extends javax.swing.JFrame {
 
     private void eliminarbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarbtnActionPerformed
         eliminar();
-        consultar();
+                consultar();
     }//GEN-LAST:event_eliminarbtnActionPerformed
 
     private void imprimirbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirbtnActionPerformed
@@ -430,6 +430,7 @@ public class ViewJoyas extends javax.swing.JFrame {
                 Connection con = connection.getConnection();
                 st = con.createStatement();
                 st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Joya eliminada correctamente");
                 limpiartabla();
             }
         } catch (Exception e) {
